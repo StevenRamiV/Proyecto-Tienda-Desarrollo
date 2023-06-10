@@ -1,0 +1,23 @@
+#tituloprincipal{
+    color: blue;
+    font-size: 30px;
+    font-family: Comic Sans MS;
+}
+.parrafosejemplo{
+    color: green;
+    font-weight: bold;
+    font-size: 50px;
+}
+a{
+    color: blueviolet;
+}
+a:hover{
+    color: white;
+    background-color: black;
+    font-size: 25px;
+    transition: 0.9s;
+}
+a:active{
+    color: crimson;
+    background-color: cadetblue;
+}
