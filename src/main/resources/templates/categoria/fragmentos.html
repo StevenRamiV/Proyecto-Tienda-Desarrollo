@@ -20,6 +20,13 @@
                         </button>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-3">   
+                        <a th:href="@{/categoria/nuevo}"
+                           class="btn btn-info">
+                            <i class="fas fa-plus"></i> [[#{accion.nuevo}]]</a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -84,7 +91,8 @@
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${categoria.descripcion}]]</td>
                                             <td th:text="${categoria.activo} ? 'Activa' : 'Inactiva'" />
-                                            <td><a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
+                                            <td>
+                                                <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
                                                 <a th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
