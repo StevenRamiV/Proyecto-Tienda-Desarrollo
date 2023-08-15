@@ -1,8 +1,8 @@
 
 package com.Tienda.controller;
 
-import com.Tienda.dao.UsuarioDao;
 import com.Tienda.domain.Usuario;
+import com.Tienda.service.ProductoService;
 import jakarta.servlet.http.HttpSession;
 import javax.validation.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,28 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
     
     @Autowired
-    UsuarioDao usuarioDao;
+    ProductoService productoService;
     
     @RequestMapping("/")
     public String page(Model model, HttpSession session) {
-        model.addAttribute("mensaje", "Hola desde el contolador");
-        
-      //  String imagen = (String) session.getAttribute("usuarioImagen");
-      //  model.addAttribute("avatar", imagen);
-      
-     Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-     
-     UserDetails user = null;
-             
-     if (principal instanceof UserDetails){
-         user = (UserDetails) principal;
-     }
-     
-     if (user != null){
-         Usuario usuario = usuarioDao.findByUsername(user.getUsername());
-         
-         session.setAttribute("Email", usuario.getCorreo());
-     }
+        var productos = productoService.getProductos(true);
+        model.addAttribute("productos", productos);
         return "index";
     }
     
